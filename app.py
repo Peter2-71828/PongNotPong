@@ -1,6 +1,5 @@
 import pygame, sys, random
-from pong_game.ball import Ball
-
+from pong_game.ball import ball, ball_animation
 
 def player_animation():
   player.y += player_speed
@@ -39,7 +38,6 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Z~P~ $$$$$$$")
 
 # Game Rectangles
-ball = Ball()
 player = pygame.Rect(screen_width - 20, screen_height/2 -70, 10, 140)
 opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 
@@ -78,7 +76,7 @@ while True:
   ball_animation()
   player_animation()
   opponent_ai()
-  
+
   # Visuals
   screen.fill(bg_color)
   pygame.draw.rect(screen,orange, player)
