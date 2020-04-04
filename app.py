@@ -1,15 +1,13 @@
-import pygame, sys, random
+import pygame, sys
 from pong_game.projectile import Projectile
 from pong_game.player import Player
+from pong_game.window import *
 
 # General setup
 pygame.init()
 clock = pygame.time.Clock()
 
 # Setting up the main window
-screen_width = 1280
-screen_height = 960
-score_section = 100
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Z~P~ $$$$$$$")
 
