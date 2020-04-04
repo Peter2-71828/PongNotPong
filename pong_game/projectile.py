@@ -1,41 +1,33 @@
 import pygame, random
+from pong_game.window import Window
 
 class Projectile():
 
     def __init__(self):
-        screen_width = 1280
-        screen_height = 960
         self.speed_x = 7
         self.speed_y = 7
 
-    def ball_animation(self, player, opponent, ball):
-
-      score_section = 100
-      screen_width = 1280
-      screen_height = 960
-
+    def ball_animation(self, player, opponent, ball, window):
       ball.x += self.speed_x
       ball.y += self.speed_y
 
-      if ball.top <= score_section or ball.bottom >= screen_height:
+      if ball.top <= window.score_size or ball.bottom >= window.h:
         self.speed_y *= -1
 
       if ball.left <= 0:
         # playerB_score += 1
-        self.ball_restart(ball)
+        self.ball_restart(ball, window)
 
-      if ball.right >= screen_width:
+      if ball.right >= window.w:
         # playerA_score += 1
-        self.ball_restart(ball)
+        self.ball_restart(ball, window)
 
       if ball.colliderect(player) or ball.colliderect(opponent):
         self.speed_y += 1
         self.speed_x += 1
         self.speed_x *= -1
 
-    def ball_restart(self, ball):
-      screen_width = 1280
-      screen_height = 960
-      ball.center = (screen_width/2, screen_height/2)
+    def ball_restart(self, ball, window):
+      ball.center = (window.w/2, window.h/2)
       self.spee_x = random.choice((7, -7))
       self.spee_y = random.choice((7, -7))

@@ -1,25 +1,26 @@
 import pygame, sys
 from pong_game.projectile import Projectile
 from pong_game.player import Player
-from pong_game.window import *
+from pong_game.window import Window
 
 # General setup
 pygame.init()
 clock = pygame.time.Clock()
 
 # Setting up the main window
-screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Z~P~ $$$$$$$")
 
+window = Window()
+
 # Game Rectangles
-player = pygame.Rect(screen_width - 20, screen_height/2 -70, 10, 140)
-opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
+player = pygame.Rect(window.w - 20, window.h/2 -70, 10, 140)
+opponent = pygame.Rect(10, window.h/2 - 70, 10, 140)
 
 projectile = Projectile()
 player_real = Player()
 player_cpu = Player(10)
 
-ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15, 30, 30)
+ball = pygame.Rect(window.w/2 - 15, window.h/2 - 15, 30, 30)
 
 bg_color = pygame.Color('grey12')
 orange = (255,165,0)
@@ -48,22 +49,27 @@ while True:
       if event.key == pygame.K_UP:
         player_real.speed += 7
 
-  projectile.ball_animation(player, opponent, ball)
-  player_real.player_animation(player)
-  player_cpu.opponent_ai(opponent, ball)
+    if event.type == pygame.VIDEORESIZE:
+      window.resize(event.w, event.h)
+      player = pygame.Rect(window.w - 20, window.h/2 -70, 10, 140)
+      opponent = pygame.Rect(10, window.h/2 - 70, 10, 140)
+
+  projectile.ball_animation(player, opponent, ball, window)
+  player_real.player_animation(player, window)
+  player_cpu.opponent_ai(opponent, ball, window)
 
   # Visuals
-  screen.fill(bg_color)
-  pygame.draw.rect(screen,orange, player)
-  pygame.draw.rect(screen,orange, opponent)
-  pygame.draw.ellipse(screen,orange, ball)
-  pygame.draw.aaline(screen, orange, (screen_width/2, 0), (screen_width/2,screen_height))
-  pygame.draw.aaline(screen, orange, (screen_width ,score_section), (0,score_section))
+  window.game_display.fill(bg_color)
+  pygame.draw.rect(window.game_display,orange, player)
+  pygame.draw.rect(window.game_display,orange, opponent)
+  pygame.draw.ellipse(window.game_display,orange, ball)
+  pygame.draw.aaline(window.game_display, orange, (window.w/2, 0), (window.w/2,window.h))
+  pygame.draw.aaline(window.game_display, orange, (window.w ,window.score_size), (0,window.score_size))
   font = pygame.font.Font(None, 74)
   text = font.render(str(f"Computer - {playerA_score}"), 1, orange)
-  screen.blit(text, (screen_width / 6, 25))
+  window.game_display.blit(text, (window.w / 6, 25))
   text = font.render(str(f"{player_1} - {playerB_score}"), 1, orange)
-  screen.blit(text, ((screen_width / 6) * 4, 25))
+  window.game_display.blit(text, ((window.w / 6) * 4, 25))
 
   # Updating the window
   pygame.display.flip()
