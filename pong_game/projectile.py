@@ -29,9 +29,9 @@ class Projectile():
         self.ball_restart(ball)
 
       if ball.colliderect(player) or ball.colliderect(opponent):
-        ball_speed_y += 1
-        ball_speed_x += 1
-        ball_speed_x *= -1
+        self.speed_y += 1
+        self.speed_x += 1
+        self.speed_x *= -1
 
     def ball_restart(self, ball):
       screen_width = 1280
