@@ -1,30 +1,6 @@
 import pygame, sys, random
-from pong_game.ball import ball, ball_animation
-
-def player_animation():
-  player.y += player_speed
-  if player.top <= score_section:
-    player.top = score_section
-  if player.bottom >= screen_height:
-    player.bottom = screen_height
-
-def opponent_ai():
-  if opponent.top < ball.y:
-    opponent.top += opponent_speed
-  if opponent.bottom > ball.y:
-    opponent.bottom -= opponent_speed
-  if opponent.top <= score_section:
-    opponent.top = score_section
-  if opponent.bottom >= screen_height:
-    opponent.bottom = screen_height
-
-def ball_restart():
-  global ball_speed_y, ball_speed_x
-  ball.center = (screen_width/2, screen_height/2)
-  ball_speed_x = 7
-  ball_speed_y = 7
-  ball_speed_y *= random.choice((1, -1))
-  ball_speed_x *= random.choice((1, -1))
+from pong_game.ball_actions import ball_restart, ball_animation
+from pong_game.paddle import player_animation, opponent_ai
 
 # General setup
 pygame.init()
@@ -40,6 +16,8 @@ pygame.display.set_caption("Z~P~ $$$$$$$")
 # Game Rectangles
 player = pygame.Rect(screen_width - 20, screen_height/2 -70, 10, 140)
 opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
+
+ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15, 30, 30)
 
 bg_color = pygame.Color('grey12')
 orange = (255,165,0)
@@ -73,9 +51,9 @@ while True:
       if event.key == pygame.K_UP:
         player_speed += 7
 
-  ball_animation()
-  player_animation()
-  opponent_ai()
+  ball_animation(player, opponent, ball)
+  player_animation(player)
+  opponent_ai(opponent, ball)
 
   # Visuals
   screen.fill(bg_color)
