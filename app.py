@@ -1,5 +1,5 @@
 import pygame, sys, random
-from pong_game.ball_actions import ball_restart, ball_animation
+from pong_game.projectile import Projectile
 from pong_game.paddle import player_animation, opponent_ai
 
 # General setup
@@ -17,13 +17,13 @@ pygame.display.set_caption("Z~P~ $$$$$$$")
 player = pygame.Rect(screen_width - 20, screen_height/2 -70, 10, 140)
 opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 
+projectile = Projectile()
+
 ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15, 30, 30)
 
 bg_color = pygame.Color('grey12')
 orange = (255,165,0)
 
-ball_speed_x = 7 * random.choice((1, -1))
-ball_speed_y = 7 * random.choice((1, -1))
 player_speed = 0
 opponent_speed = 10
 
@@ -51,7 +51,7 @@ while True:
       if event.key == pygame.K_UP:
         player_speed += 7
 
-  ball_animation(player, opponent, ball)
+  projectile.ball_animation(player, opponent, ball)
   player_animation(player)
   opponent_ai(opponent, ball)
 
