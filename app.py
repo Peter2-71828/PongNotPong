@@ -1,6 +1,6 @@
 import pygame, sys, random
 from pong_game.projectile import Projectile
-from pong_game.paddle import player_animation, opponent_ai
+from pong_game.player import Player
 
 # General setup
 pygame.init()
@@ -18,14 +18,13 @@ player = pygame.Rect(screen_width - 20, screen_height/2 -70, 10, 140)
 opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 
 projectile = Projectile()
+player_real = Player()
+player_cpu = Player(10)
 
 ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15, 30, 30)
 
 bg_color = pygame.Color('grey12')
 orange = (255,165,0)
-
-player_speed = 0
-opponent_speed = 10
 
 # Game scores
 player_1 = input("Enter your name: ")
@@ -41,19 +40,19 @@ while True:
 
     if event.type == pygame.KEYDOWN:
       if event.key == pygame.K_DOWN:
-        player_speed += 7
+        player_real.speed += 7
       if event.key == pygame.K_UP:
-        player_speed -= 7
+        player_real.speed -= 7
 
     if event.type == pygame.KEYUP:
       if event.key == pygame.K_DOWN:
-        player_speed -= 7
+        player_real.speed -= 7
       if event.key == pygame.K_UP:
-        player_speed += 7
+        player_real.speed += 7
 
   projectile.ball_animation(player, opponent, ball)
-  player_animation(player)
-  opponent_ai(opponent, ball)
+  player_real.player_animation(player)
+  player_cpu.opponent_ai(opponent, ball)
 
   # Visuals
   screen.fill(bg_color)
