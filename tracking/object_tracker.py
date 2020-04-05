@@ -1,4 +1,4 @@
-from centroid_register import CentroidRegister
+from tracking.centroid_register import CentroidRegister
 from imutils.video import VideoStream
 import numpy as np
 import argparse
@@ -18,7 +18,7 @@ time.sleep(2.0)
 cr = CentroidRegister()
 (H, W) = (None, None)
 
-while True:
+def movement(cr = cr, H = H, W = W):
 	frame = vs.read()
 	frame = imutils.resize(frame, width=400)
 
@@ -45,6 +45,11 @@ while True:
 
 	objects = cr.update(rects)
 
+	for k, v in objects.items():	
+		global head 
+		head = v[1]
+
+
 	for (objectID, centroid) in objects.items():
 
 		text = "ID {}".format(objectID)
@@ -55,8 +60,8 @@ while True:
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
 
-	if key == ord("q"):
-		break
+	# if key == ord("q"):
+	# 	break
 
 cv2.destroyAllWindows()
 vs.stop()
