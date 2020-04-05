@@ -18,7 +18,8 @@ time.sleep(2.0)
 cr = CentroidRegister()
 (H, W) = (None, None)
 
-def movement(cr = cr, H = H, W = W):
+def movement(net = net, vs = vs, cr = cr, H = H, W = W):
+	print(vs)
 	frame = vs.read()
 	frame = imutils.resize(frame, width=400)
 
@@ -63,5 +64,5 @@ def movement(cr = cr, H = H, W = W):
 	# if key == ord("q"):
 	# 	break
 
-cv2.destroyAllWindows()
-vs.stop()
+# cv2.destroyAllWindows()
+# vs.stop()
