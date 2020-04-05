@@ -12,13 +12,13 @@ pygame.display.set_caption("Z~P~ $$$$$$$")
 
 window = Window()
 
-# Game Rectangles
-player = pygame.Rect(window.w - 20, window.h/2 -70, 10, 140)
-opponent = pygame.Rect(10, window.h/2 - 70, 10, 140)
+# # Game Rectangles
+# player = pygame.Rect(window.w - 20, window.h/2 -70, 10, 140)
+# opponent = pygame.Rect(10, window.h/2 - 70, 10, 140)
 
 projectile = Projectile()
-player_real = Player()
-player_cpu = Player(10)
+player_real = Player(window, (window.w - 20))
+player_cpu = Player(window, 10, 10)
 
 ball = pygame.Rect(window.w/2 - 15, window.h/2 - 15, 30, 30)
 
@@ -51,17 +51,17 @@ while True:
 
     if event.type == pygame.VIDEORESIZE:
       window.resize(event.w, event.h)
-      player = pygame.Rect(window.w - 20, window.h/2 -70, 10, 140)
-      opponent = pygame.Rect(10, window.h/2 - 70, 10, 140)
+      player_real.update()
+      player_cpu.update()
 
-  projectile.ball_animation(player, opponent, ball, window)
-  player_real.player_animation(player, window)
-  player_cpu.opponent_ai(opponent, ball, window)
+  projectile.ball_animation(player_real.position, player_cpu.position, ball, window)
+  player_real.player_animation(player_real.position, window)
+  player_cpu.opponent_ai(player_cpu.position, ball, window)
 
   # Visuals
   window.game_display.fill(bg_color)
-  pygame.draw.rect(window.game_display,orange, player)
-  pygame.draw.rect(window.game_display,orange, opponent)
+  pygame.draw.rect(window.game_display,orange, player_real.position)
+  pygame.draw.rect(window.game_display,orange, player_cpu.position)
   pygame.draw.ellipse(window.game_display,orange, ball)
   pygame.draw.aaline(window.game_display, orange, (window.w/2, 0), (window.w/2,window.h))
   pygame.draw.aaline(window.game_display, orange, (window.w ,window.score_size), (0,window.score_size))
