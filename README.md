@@ -20,7 +20,8 @@ End: 09/04/2020
 
 ## Description
 
-The MVP for our project is to be able to recognise a body part and have it utilise it as a user input for a game
+The MVP for our project is to be able to recognise  
+a body part and have it utilise it as a user input for a game
 
 ## Project Structure
 ```
