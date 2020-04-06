@@ -3,7 +3,7 @@ from pong_game.projectile import Projectile
 from pong_game.player import Player
 from pong_game.window import Window
 from tracking.object_tracker import movement
-from multiprocessing import Process
+# from multiprocessing
 
 pygame.init()
 pygame.display.set_caption("Pong Not Pong")
@@ -21,7 +21,7 @@ player2 = Player(window, 10, 'cpu', 10)
 
 def game_play():
   while True:
-    # Handling input
+
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         pygame.quit()
