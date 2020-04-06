@@ -9,6 +9,7 @@ from cv2 import dnn
 import itertools
 from multiprocessing import Queue
 
+
 def movement(q):
 
 	print("[INFO] loading model...")
@@ -22,7 +23,7 @@ def movement(q):
 	(H, W) = (None, None)
 
 	while True:
-		
+
 		frame = vs.read()
 		frame = imutils.resize(frame, width=400)
 

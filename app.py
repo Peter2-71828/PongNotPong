@@ -27,19 +27,20 @@ if __name__ == '__main__':
 
     player2 = Player(window, 10, 'cpu', 10)
     # position = 200
-    time.sleep(2)
+    # time.sleep(2)
     # if q.empty() == False:
     #     position = q.get(False)
     #
     # print(position)
 
     # def game_play():
-    while True:
 
-        if q.empty() == False:
-            position = q.get(False)
+    def move(position):
+        if position <= 150:
+            player1.speed += 10
 
-            print(position)
+        if position > 150:
+            player1.speed -= 10
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -60,17 +61,23 @@ if __name__ == '__main__':
                 if event.key == pygame.K_UP:
                     player1.speed += 7
 
-        if event.type == pygame.VIDEORESIZE:
-            window.resize(event.w, event.h)
-            player1.update_player(window, window.w - 20)
-            player2.update_player(window, 10)
+            if event.type == pygame.VIDEORESIZE:
+                window.resize(event.w, event.h)
+                player1.update_player(window, window.w - 20)
+                player2.update_player(window, 10)
+
+    while True:
+
+        if q.empty() == False:
+            position = q.get(False)
+            move(position)
 
         projectile.ball_animation(player1, player2, ball, window)
         player1.player_animation(player1.position, window)
         player2.opponent_ai(player2.position, ball, window)
 
         window.update_display(player1, player2, ball)
-        
+
         # Updating the window
         pygame.display.flip()
         clock.tick(60)
