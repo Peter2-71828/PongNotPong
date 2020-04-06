@@ -69,9 +69,8 @@ if __name__ == '__main__':
 
     while True:
 
-        if q.empty() == False:
-            position = q.get(False)
-            move(position)
+        position = q.get()
+        move(position)
 
         projectile.ball_animation(player1, player2, ball, window)
         player1.player_animation(player1.position, window)
@@ -79,7 +78,7 @@ if __name__ == '__main__':
 
         window.update_display(player1, player2, ball)
 
-        player1.speed = 0
+        player1.speed = player1.speed/2
 
         # Updating the window
         pygame.display.flip()
