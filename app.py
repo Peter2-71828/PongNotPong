@@ -65,12 +65,12 @@ if __name__ == '__main__':
             player1.update_player(window, window.w - 20)
             player2.update_player(window, 10)
 
-            projectile.ball_animation(player1, player2, ball, window)
-            player1.player_animation(player1.position, window)
-            player2.opponent_ai(player2.position, ball, window)
+        projectile.ball_animation(player1, player2, ball, window)
+        player1.player_animation(player1.position, window)
+        player2.opponent_ai(player2.position, ball, window)
 
         window.update_display(player1, player2, ball)
-
+        print('hello')
         # Updating the window
         pygame.display.flip()
         clock.tick(60)
