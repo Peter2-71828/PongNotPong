@@ -17,7 +17,7 @@ projectile = Projectile(window)
 ball = projectile.position
 
 # player1_name = input("Enter your name: ")
-player1 = Player(window, window.w - 20, 'ziad')
+player1 = Player(window, window.w - 20, 'Player')
 
 player2 = Player(window, 10, 'cpu', 10)
 
@@ -66,7 +66,7 @@ def main_menu():
 
 def game():
   while True:
-    movement()
+    # movement()
     # Handling input
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
