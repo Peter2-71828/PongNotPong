@@ -34,11 +34,11 @@ def draw_text(text, font, color, surface, x, y):
 
  
 
-
+click = False
 
 def main_menu():
     while True:
-        click = False
+        
         screen.fill((0,0,0))
  
         mx, my = pygame.mouse.get_pos()
@@ -47,7 +47,7 @@ def main_menu():
         button_2 = pygame.Rect((window_width - button_width)/2, 2*window_height/3, button_width, button_height)
         button_1_txt = font.render('Hello', 1, (255,255,255))
         screen.blit(button_1_txt, button_1)
-        pygame.display.update(button_1)
+        # pygame.display.update(button_1)
         if button_1.collidepoint((mx, my)):
             if click:
                 game()
@@ -73,7 +73,7 @@ def main_menu():
                     sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    game()
+                  click = True
  
         pygame.display.update()
         clock.tick(60)
