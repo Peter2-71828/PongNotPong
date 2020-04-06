@@ -19,7 +19,6 @@ cr = CentroidRegister()
 (H, W) = (None, None)
 
 def movement(net = net, vs = vs, cr = cr, H = H, W = W):
-	print(vs)
 	frame = vs.read()
 	frame = imutils.resize(frame, width=400)
 
@@ -46,8 +45,8 @@ def movement(net = net, vs = vs, cr = cr, H = H, W = W):
 
 	objects = cr.update(rects)
 
-	for k, v in objects.items():	
-		global head 
+	for k, v in objects.items():
+		global head
 		head = v[1]
 
 
