@@ -9,17 +9,17 @@ from cv2 import dnn
 import itertools
 # from multiprocessing
 
-print("[INFO] loading model...")
-net = dnn.readNetFromCaffe("detection/deploy.prototxt", "detection/res10_300x300_ssd_iter_140000.caffemodel")
+def movement():
 
-print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
-time.sleep(2.0)
+	print("[INFO] loading model...")
+	net = dnn.readNetFromCaffe("detection/deploy.prototxt", "detection/res10_300x300_ssd_iter_140000.caffemodel")
 
-cr = CentroidRegister()
-(H, W) = (None, None)
+	print("[INFO] starting video stream...")
+	vs = VideoStream(src=0).start()
+	time.sleep(2.0)
 
-def movement(net = net, vs = vs, cr = cr, H = H, W = W):
+	cr = CentroidRegister()
+	(H, W) = (None, None)
 
 	while True:
 		frame = vs.read()
