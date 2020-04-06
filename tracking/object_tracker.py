@@ -20,10 +20,9 @@ def movement(q):
 
 	cr = CentroidRegister()
 	(H, W) = (None, None)
-	a = 1
+
 	while True:
-		q.put(a)
-		a += 1
+		
 		frame = vs.read()
 		frame = imutils.resize(frame, width=400)
 
@@ -50,8 +49,8 @@ def movement(q):
 
 		objects = cr.update(rects)
 
-		# for k, v in objects.items():
-		# 	head = v[1]
+		for k, v in objects.items():
+			q.put(v[1])
 
 		for (objectID, centroid) in objects.items():
 

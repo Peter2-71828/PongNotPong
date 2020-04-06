@@ -70,7 +70,7 @@ if __name__ == '__main__':
         player2.opponent_ai(player2.position, ball, window)
 
         window.update_display(player1, player2, ball)
-        print('hello')
+        
         # Updating the window
         pygame.display.flip()
         clock.tick(60)
