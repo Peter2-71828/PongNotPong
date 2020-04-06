@@ -36,11 +36,12 @@ if __name__ == '__main__':
     # def game_play():
 
     def move(position):
+        print(position)
         if position <= 90:
             player1.speed -= 7
 
         if position >= 110:
-            player1.speed += 10
+            player1.speed += 7
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -77,6 +78,8 @@ if __name__ == '__main__':
         player2.opponent_ai(player2.position, ball, window)
 
         window.update_display(player1, player2, ball)
+
+        player1.speed = 0
 
         # Updating the window
         pygame.display.flip()

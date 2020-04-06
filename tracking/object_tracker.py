@@ -9,7 +9,6 @@ from cv2 import dnn
 import itertools
 from multiprocessing import Queue
 
-
 def movement(q):
 
 	print("[INFO] loading model...")
@@ -50,7 +49,11 @@ def movement(q):
 
 		objects = cr.update(rects)
 
+		if q.empty() == False:
+			q.get(False)
+
 		for k, v in objects.items():
+			# with q.mutex:
 			q.put(v[1])
 
 		for (objectID, centroid) in objects.items():
