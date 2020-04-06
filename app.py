@@ -49,22 +49,26 @@ def main_menu():
         pygame.draw.rect(screen, (255, 0, 0), button_medium)
         pygame.draw.rect(screen, (255, 0, 0), button_hard)
         pygame.draw.rect(screen, (255, 0, 0), button_2)
-        
+
         draw_text('Pong Not Pong', title_font, (255,255,255), screen, window_width/2, window_height/6)
         draw_text('Easy', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
         draw_text('Medium', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
         draw_text('Hard', font, (255,255,255), screen, (window_width/4) * 3, (button_height/2 + window_height/3))
         draw_text('Options', font, (255,255,255), screen, window_width/2 , (button_height/2 + 2*window_height/3))
 
+
         if button_easy.collidepoint((mx, my)):
             if click:
-              game()
+              player1 = Player(window, window.w - 20, 'Player', 400)
+              game(player1)
         if button_medium.collidepoint((mx, my)):
             if click:
-              game()
+              player1 = Player(window, window.w - 20, 'Player', 200)
+              game(player1)
         if button_hard.collidepoint((mx, my)):
             if click:
-              game()
+              player1 = Player(window, window.w - 20, 'Player', 40)
+              game(player1)
         if button_2.collidepoint((mx, my)):
             if click:
               game()
@@ -85,9 +89,8 @@ def main_menu():
         pygame.display.update()
         clock.tick(60)
 
-def game():
+def game(player1):
   while True:
-    # movement()
     # Handling input
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
