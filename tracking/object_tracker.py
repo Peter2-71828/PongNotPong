@@ -7,6 +7,7 @@ import time
 import cv2
 from cv2 import dnn
 import itertools
+from multiprocessing import Process
 
 print("[INFO] loading model...")
 net = dnn.readNetFromCaffe("detection/deploy.prototxt", "detection/res10_300x300_ssd_iter_140000.caffemodel")
@@ -18,7 +19,7 @@ time.sleep(2.0)
 cr = CentroidRegister()
 (H, W) = (None, None)
 
-def movement(net = net, vs = vs, cr = cr, H = H, W = W):
+def movement(connection, net = net, vs = vs, cr = cr, H = H, W = W):
 
 	while True:
 		frame = vs.read()
@@ -48,8 +49,9 @@ def movement(net = net, vs = vs, cr = cr, H = H, W = W):
 		objects = cr.update(rects)
 
 		for k, v in objects.items():
-			global head
 			head = v[1]
+		
+		connection.send(head)
 
 
 		for (objectID, centroid) in objects.items():
@@ -64,6 +66,8 @@ def movement(net = net, vs = vs, cr = cr, H = H, W = W):
 
 		if key == ord("q"):
 			break
+
+	connection.close()
 
 	cv2.destroyAllWindows()
 	vs.stop()
