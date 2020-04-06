@@ -2,7 +2,7 @@ import pygame, sys
 from pong_game.projectile import Projectile
 from pong_game.player import Player
 from pong_game.window import Window
-from tracking.object_tracker import movement
+# from tracking.object_tracker import movement
 
 
 pygame.init()
@@ -10,8 +10,12 @@ pygame.display.set_caption("Pong Not Pong")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, 20)
 window = Window()
-screen = pygame.display.set_mode((1280, 960),0,32)
+window_width = 1280
+window_height = 960
+button_width = 500
+button_height = 250
 
+screen = pygame.display.set_mode((window_width, window_height),0,32)
 
 projectile = Projectile(window)
 ball = projectile.position
@@ -37,8 +41,8 @@ def main_menu():
  
         mx, my = pygame.mouse.get_pos()
  
-        button_1 = pygame.Rect(50, 100, 200, 50)
-        button_2 = pygame.Rect(50, 200, 200, 50)
+        button_1 = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
+        button_2 = pygame.Rect((window_width - button_width)/2, 2*window_height/3, button_width, button_height)
         if button_1.collidepoint((mx, my)):
             if click:
                 game()
