@@ -7,9 +7,9 @@ import time
 import cv2
 from cv2 import dnn
 import itertools
-# from multiprocessing
+from multiprocessing import Queue
 
-def movement():
+def movement(q):
 
 	print("[INFO] loading model...")
 	net = dnn.readNetFromCaffe("detection/deploy.prototxt", "detection/res10_300x300_ssd_iter_140000.caffemodel")
@@ -22,6 +22,7 @@ def movement():
 	(H, W) = (None, None)
 
 	while True:
+		q.put(1)
 		frame = vs.read()
 		frame = imutils.resize(frame, width=400)
 

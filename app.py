@@ -3,56 +3,77 @@ from pong_game.projectile import Projectile
 from pong_game.player import Player
 from pong_game.window import Window
 from tracking.object_tracker import movement
-# from multiprocessing
+from multiprocessing import Process, Queue
+import multiprocessing as mp
+import time
 
-pygame.init()
-pygame.display.set_caption("Pong Not Pong")
-clock = pygame.time.Clock()
+if __name__ == '__main__':
+    mp.set_start_method('spawn')
+    q = Queue()
+    p = Process(target=movement, args=(q,))
+    p.start()
 
-window = Window()
+    pygame.init()
+    pygame.display.set_caption("Pong Not Pong")
+    clock = pygame.time.Clock()
 
-projectile = Projectile(window)
-ball = projectile.position
+    window = Window()
 
-player1_name = input("Enter your name: ")
-player1 = Player(window, window.w - 20, player1_name)
+    projectile = Projectile(window)
+    ball = projectile.position
 
-player2 = Player(window, 10, 'cpu', 10)
+    player1_name = input("Enter your name: ")
+    player1 = Player(window, window.w - 20, player1_name)
 
-def game_play():
-  while True:
+    player2 = Player(window, 10, 'cpu', 10)
+    # position = 200
+    time.sleep(2)
+    # if q.empty() == False:
+    #     position = q.get(False)
+    #
+    # print(position)
 
-    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-        pygame.quit()
-        sys.exit()
+    # def game_play():
+    while True:
 
-      if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_DOWN:
-          player1.speed += 7
-        if event.key == pygame.K_UP:
-          player1.speed -= 7
+        if q.empty() == False:
+            position = q.get(False)
 
-      if event.type == pygame.KEYUP:
-        if event.key == pygame.K_DOWN:
-          player1.speed -= 7
-        if event.key == pygame.K_UP:
-          player1.speed += 7
+            print(position)
 
-      if event.type == pygame.VIDEORESIZE:
-        window.resize(event.w, event.h)
-        player1.update_player(window, window.w - 20)
-        player2.update_player(window, 10)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-    projectile.ball_animation(player1, player2, ball, window)
-    player1.player_animation(player1.position, window)
-    player2.opponent_ai(player2.position, ball, window)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_DOWN:
+                    player1.speed += 7
 
-    window.update_display(player1, player2, ball)
+                if event.key == pygame.K_UP:
+                    player1.speed -= 7
 
-    # Updating the window
-    pygame.display.flip()
-    clock.tick(60)
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_DOWN:
+                    player1.speed -= 7
 
-movement()
-game_play()
+                if event.key == pygame.K_UP:
+                    player1.speed += 7
+
+        if event.type == pygame.VIDEORESIZE:
+            window.resize(event.w, event.h)
+            player1.update_player(window, window.w - 20)
+            player2.update_player(window, 10)
+
+            projectile.ball_animation(player1, player2, ball, window)
+            player1.player_animation(player1.position, window)
+            player2.opponent_ai(player2.position, ball, window)
+
+        window.update_display(player1, player2, ball)
+
+        # Updating the window
+        pygame.display.flip()
+        clock.tick(60)
+
+# movement(q)
+# game_play()
