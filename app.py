@@ -28,21 +28,26 @@ player2 = Player(window, 10, 'cpu', 10)
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
-    textrect.topleft = (x, y)
+    # textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
+# self.screen.blit(self.font.render('Hello!', True, (255,0,0)), (200, 100))
+
  
-click = False
+
+
 
 def main_menu():
     while True:
- 
+        click = False
         screen.fill((0,0,0))
-        draw_text('main menu', font, (255, 255, 255), screen, 20, 20)
  
         mx, my = pygame.mouse.get_pos()
  
         button_1 = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
         button_2 = pygame.Rect((window_width - button_width)/2, 2*window_height/3, button_width, button_height)
+        button_1_txt = font.render('Hello', 1, (255,255,255))
+        screen.blit(button_1_txt, button_1)
+        pygame.display.update(button_1)
         if button_1.collidepoint((mx, my)):
             if click:
                 game()
@@ -51,6 +56,11 @@ def main_menu():
                 options()
         pygame.draw.rect(screen, (255, 0, 0), button_1)
         pygame.draw.rect(screen, (255, 0, 0), button_2)
+        # draw_text('Play Game', font, (255,255,255), button_1, button_width, button_height)
+
+        # pygame.draw.textbox('Hello', button_1)
+        # draw_text('Play Game', font, (255, 255, 255), screen, window_width/2, window_height/2)
+
  
         click = False
         for event in pygame.event.get():
