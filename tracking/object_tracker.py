@@ -62,8 +62,8 @@ def movement(net = net, vs = vs, cr = cr, H = H, W = W):
 		cv2.imshow("Frame", frame)
 		key = cv2.waitKey(1) & 0xFF
 
-		# if key == ord("q"):
-		# 	break
+		if key == ord("q"):
+			break
 
-	# cv2.destroyAllWindows()
-	# vs.stop()
+	cv2.destroyAllWindows()
+	vs.stop()

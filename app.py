@@ -19,9 +19,10 @@ player1 = Player(window, window.w - 20, player1_name)
 
 player2 = Player(window, 10, 'cpu', 10)
 
+movement()
+
 while True:
   # Handling input
-  movement()
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       pygame.quit()
