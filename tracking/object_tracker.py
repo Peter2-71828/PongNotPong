@@ -19,7 +19,6 @@ cr = CentroidRegister()
 (H, W) = (None, None)
 
 def movement(net = net, vs = vs, cr = cr, H = H, W = W):
-	print(vs)
 	frame = vs.read()
 	frame = imutils.resize(frame, width=400)
 
@@ -35,7 +34,7 @@ def movement(net = net, vs = vs, cr = cr, H = H, W = W):
 	for i in range(0, detections.shape[2]):
 
 		if detections[0, 0, i, 2] > 0.5:
-            # confidence value 0.5
+						# confidence value 0.5
 
 			box = detections[0, 0, i, 3:7] * np.array([W, H, W, H])
 			rects.append(box.astype("int"))
@@ -64,5 +63,5 @@ def movement(net = net, vs = vs, cr = cr, H = H, W = W):
 	# if key == ord("q"):
 	# 	break
 
-# cv2.destroyAllWindows()
-# vs.stop()
+	# cv2.destroyAllWindows()
+	# vs.stop()
