@@ -9,30 +9,27 @@ pygame.init()
 pygame.display.set_caption("Pong Not Pong")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, 80)
+title_font = pygame.font.SysFont(None, 100)
 window = Window()
 window_width = 1280
 window_height = 960
-button_width = 500
-button_height = 250
+button_width = 250
+button_height = 200
+
 
 screen = pygame.display.set_mode((window_width, window_height),0,32)
 
 projectile = Projectile(window)
 ball = projectile.position
 
-# player1_name = input("Enter your name: ")
-player1 = Player(window, window.w - 20, 'Player')
-
-player2 = Player(window, 10, 'cpu', 10)
+player1 = Player(window, window.w - 20, 'Player', 100)
+player2 = Player(window, 10, 'cpu', 100, 10)
 
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
     textrect.center = (x, y)
     surface.blit(textobj, textrect)
-# self.screen.blit(self.font.render('Hello!', True, (255,0,0)), (200, 100))
-
- 
 
 click = False
 
@@ -43,26 +40,34 @@ def main_menu():
  
         mx, my = pygame.mouse.get_pos()
  
-        button_1 = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
-        button_2 = pygame.Rect((window_width - button_width)/2, 2*window_height/3, button_width, button_height)
+        button_easy = pygame.Rect((window_width/4) - button_width / 2, window_height/3, button_width, button_height)
+        button_medium = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
+        button_hard = pygame.Rect(((window_width/4) * 3) - (button_width/2), window_height/3, button_width, button_height)
+        button_2 = pygame.Rect((window_width - button_width)/2, 2 * window_height/3, button_width, button_height)
         # button_1_txt = font.render('Hello', 1, (255,255,255))
         # screen.blit(button_1_txt, button_1)
-        pygame.draw.rect(screen, (255, 0, 0), button_1)
+        pygame.draw.rect(screen, (255, 0, 0), button_easy)
+        pygame.draw.rect(screen, (255, 0, 0), button_medium)
+        pygame.draw.rect(screen, (255, 0, 0), button_hard)
         pygame.draw.rect(screen, (255, 0, 0), button_2)
-        draw_text('Play Game', font, (255,255,255), screen, window_width/2 , (button_height/2 + window_height/3))
+        draw_text('Pong Not Pong', title_font, (255,255,255), screen, window_width/2, window_height/6)
+        draw_text('Easy', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
+        draw_text('Medium', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
+        draw_text('Hard', font, (255,255,255), screen, (window_width/4) * 3, (button_height/2 + window_height/3))
         draw_text('Options', font, (255,255,255), screen, window_width/2 , (button_height/2 + 2*window_height/3))
 
-        if button_1.collidepoint((mx, my)):
+        if button_easy.collidepoint((mx, my)):
             if click:
-                game()
+              game()
+        if button_medium.collidepoint((mx, my)):
+            if click:
+              game()
+        if button_hard.collidepoint((mx, my)):
+            if click:
+              game()
         if button_2.collidepoint((mx, my)):
             if click:
-                options()
-        # draw_text('Play Game', font, (255,255,255), button_1, button_width, button_height)
-
-        # pygame.draw.textbox('Hello', button_1)
-        # draw_text('Play Game', font, (255, 255, 255), screen, window_width/2, window_height/2)
-
+              game()
  
         click = False
         for event in pygame.event.get():
