@@ -44,12 +44,12 @@ def main_menu():
         button_medium = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
         button_hard = pygame.Rect(((window_width/4) * 3) - (button_width/2), window_height/3, button_width, button_height)
         button_2 = pygame.Rect((window_width - button_width)/2, 2 * window_height/3, button_width, button_height)
-        # button_1_txt = font.render('Hello', 1, (255,255,255))
-        # screen.blit(button_1_txt, button_1)
+
         pygame.draw.rect(screen, (255, 0, 0), button_easy)
         pygame.draw.rect(screen, (255, 0, 0), button_medium)
         pygame.draw.rect(screen, (255, 0, 0), button_hard)
         pygame.draw.rect(screen, (255, 0, 0), button_2)
+        
         draw_text('Pong Not Pong', title_font, (255,255,255), screen, window_width/2, window_height/6)
         draw_text('Easy', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
         draw_text('Medium', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
