@@ -36,11 +36,11 @@ if __name__ == '__main__':
     # def game_play():
 
     def move(position):
-        if position <= 150:
-            player1.speed += 10
+        if position <= 90:
+            player1.speed -= 7
 
-        if position > 150:
-            player1.speed -= 10
+        if position >= 110:
+            player1.speed += 10
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
