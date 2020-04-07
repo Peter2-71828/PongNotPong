@@ -10,23 +10,22 @@ import multiprocessing as mp
 import time
 
 if __name__ == '__main__':
-  mp.set_start_method('spawn')
-  q = Queue()
-  p = Process(target=movement, args=(q,))
-  l = mp.Lock()
-  p.start()
+    mp.set_start_method('spawn')
+    q = Queue()
+    p = Process(target=movement, args=(q,))
+    l = mp.Lock()
+    p.start()
 
-  pygame.init()
-  pygame.display.set_caption("Pong Not Pong")
-  clock = pygame.time.Clock()
-  window = Window()
+    pygame.init()
+    pygame.display.set_caption("Pong Not Pong")
+    clock = pygame.time.Clock()
+    window = Window()
 
-  projectile = Projectile(window)
-  ball = projectile.position
+    projectile = Projectile(window)
+    ball = projectile.position
 
-  menu = Menu()
+    menu = Menu()
 
-  while True:
     menu.main_menu(window)
     menu.score_menu(window)
 
@@ -37,26 +36,25 @@ if __name__ == '__main__':
 
     while True:
 
-      l.acquire()
-      position = q.get()
-      l.release()
-      move(position, player1, player2)
+        l.acquire()
+        position = q.get()
+        l.release()
+        move(position, player1, player2)
 
-      projectile.ball_animation(player1, player2, ball, window)
-      player1.player_animation(player1.position, window)
-      player2.opponent_ai(player2.position, ball, window)
+        projectile.ball_animation(player1, player2, ball, window)
+        player1.player_animation(player1.position, window)
+        player2.opponent_ai(player2.position, ball, window)
 
-      window.update_display(player1, player2, ball)
+        window.update_display(player1, player2, ball)
 
-      player1.speed = player1.speed/2
+        player1.speed = player1.speed/2
 
-      pygame.display.flip()
-      clock.tick(60)
+        pygame.display.flip()
+        clock.tick(60)
 
-      if player1.score == menu.max_score or player2.score == menu.max_score:
-        if player1.score > player2.score:
-          winner = player1.name
-        else:
-          winner = player2.name
-        menu.winner_menu(window, winner)
-        break
+        if player1.score == menu.max_score or player2.score == menu.max_score:
+            if player1.score > player2.score:
+                winner = player1.name
+            else:
+                winner = player2.name
+            menu.winner_menu(window, winner)
