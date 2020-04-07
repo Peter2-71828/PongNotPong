@@ -13,6 +13,7 @@ if __name__ == '__main__':
   mp.set_start_method('spawn')
   q = Queue()
   p = Process(target=movement, args=(q,))
+  l = mp.Lock()
   p.start()
 
   pygame.init()
@@ -36,7 +37,9 @@ if __name__ == '__main__':
 
     while True:
 
+      l.acquire()
       position = q.get()
+      l.release()
       move(position, player1, player2)
 
       projectile.ball_animation(player1, player2, ball, window)
