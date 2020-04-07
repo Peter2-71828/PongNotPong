@@ -32,7 +32,7 @@ if __name__ == '__main__':
   # player1_name = input("Enter your name: ")
 
   while True:
-
+    print(f"player1 = {player1.score}, player2 = {player2.score}")
     position = q.get()
     move(position, player1, player2)
 
