@@ -142,7 +142,8 @@ class Menu():
       pygame.display.update()
       clock.tick(60)
 
-  def winner_menu(self, window):
+  def winner_menu(self, window, winner):
+    winner_string = '{} is the winner!'.format(winner)
     click = False
     window_width = window.w
     window_height = window.h
@@ -171,7 +172,7 @@ class Menu():
       pygame.draw.rect(screen, (255, 0, 0), button_restart)
       pygame.draw.rect(screen, (255, 0, 0), button_exit)
 
-      draw_text('Would you like to play again?', title_font, (255,255,255), screen, window_width/2, window_height/6)
+      draw_text(winner_string, title_font, (255,255,255), screen, window_width/2, window_height/6)
       draw_text('Restart', font, (255,255,255), screen, window_width/3, (button_height/2 + window_height/3))
       draw_text('Exit', font, (255,255,255), screen, (2*window_width)/3, (button_height/2 + window_height/3))
 

@@ -30,7 +30,7 @@ if __name__ == '__main__':
     menu.score_menu(window)
 
     player1 = Player(window, window.w - 20, 'Player', menu.player1_paddle_size)
-    player2 = Player(window, 10, 'cpu', 100, 10)
+    player2 = Player(window, 10, 'Cedrick', 100, 10)
 
     # player1_name = input("Enter your name: ")
 
@@ -51,5 +51,9 @@ if __name__ == '__main__':
       clock.tick(60)
 
       if player1.score == menu.max_score or player2.score == menu.max_score:
-        menu.winner_menu(window)
+        if player1.score > player2.score:
+          winner = player1.name
+        else:
+          winner = player2.name
+        menu.winner_menu(window, winner)
         break
