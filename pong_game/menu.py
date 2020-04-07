@@ -9,11 +9,10 @@ class Menu():
   def __init__(self, player1_paddle_size = 200):
     self.player1_paddle_size = player1_paddle_size
 
-
   def main_menu(self, window):
     click = False
-    window_width = 1280
-    window_height = 960
+    window_width = window.w
+    window_height = window.h
     button_width = 250
     button_height = 200
     screen = pygame.display.set_mode((window_width, window_height),0,32)
@@ -26,7 +25,6 @@ class Menu():
       textrect = textobj.get_rect()
       textrect.center = (x, y)
       surface.blit(textobj, textrect)
-
 
     while True:
         
@@ -67,6 +65,72 @@ class Menu():
         if click:
           pygame.quit()
           sys.exit()
+
+      click = False
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+          pygame.quit()
+          sys.exit()
+        if event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+          if event.button == 1:
+            click = True
+
+      pygame.display.update()
+      clock.tick(60)
+
+  def score_menu(self, window):
+    click = False
+    window_width = window.w
+    window_height = window.h
+    button_width = 250
+    button_height = 200
+    screen = pygame.display.set_mode((window_width, window_height),0,32)
+    font = pygame.font.SysFont(None, 80)
+    title_font = pygame.font.SysFont(None, 100)
+    clock = pygame.time.Clock()
+
+    def draw_text(text, font, color, surface, x, y):
+      textobj = font.render(text, 1, color)
+      textrect = textobj.get_rect()
+      textrect.center = (x, y)
+      surface.blit(textobj, textrect)
+
+    while True:
+        
+      screen.fill((0,0,0))
+
+      mx, my = pygame.mouse.get_pos()
+
+      button_low = pygame.Rect((window_width/4) - button_width / 2, window_height/3, button_width, button_height)
+      button_mid = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
+      button_high = pygame.Rect(((window_width/4) * 3) - (button_width/2), window_height/3, button_width, button_height)
+
+      pygame.draw.rect(screen, (255, 0, 0), button_low)
+      pygame.draw.rect(screen, (255, 0, 0), button_mid)
+      pygame.draw.rect(screen, (255, 0, 0), button_high)
+
+      draw_text('Select Max score:', title_font, (255,255,255), screen, window_width/2, window_height/6)
+      draw_text('2', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
+      draw_text('5', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
+      draw_text('7', font, (255,255,255), screen, (window_width/4) * 3, (button_height/2 + window_height/3))
+
+
+      if button_low.collidepoint((mx, my)):
+        if click:
+          self.player1_paddle_size = 400
+          break
+      if button_mid.collidepoint((mx, my)):
+        if click:
+          self.player1_paddle_size = 200
+          break
+      if button_high.collidepoint((mx, my)):
+        if click:
+          self.player1_paddle_size = 40
+          break
 
       click = False
       for event in pygame.event.get():
