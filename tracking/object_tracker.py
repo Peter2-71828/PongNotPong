@@ -53,7 +53,6 @@ def movement(q):
 			q.get(False)
 
 		for k, v in objects.items():
-			# with q.mutex:
 			q.put(v[1])
 
 		for (objectID, centroid) in objects.items():
