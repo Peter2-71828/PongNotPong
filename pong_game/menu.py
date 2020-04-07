@@ -6,7 +6,11 @@ from pong_game.window import Window
 
 class Menu():
 
-  def main_menu(window, player1, player2):
+  def __init__(self, player1_paddle_size = 200):
+    self.player1_paddle_size = player1_paddle_size
+
+
+  def main_menu(self, window):
     click = False
     window_width = 1280
     window_height = 960
@@ -49,15 +53,15 @@ class Menu():
 
       if button_easy.collidepoint((mx, my)):
         if click:
-          player1 = Player(window, window.w - 20, 'Player', 400)
+          self.player1_paddle_size = 400
           break
       if button_medium.collidepoint((mx, my)):
         if click:
-          player1 = Player(window, window.w - 20, 'Player', 200)
+          self.player1_paddle_size = 200
           break
       if button_hard.collidepoint((mx, my)):
         if click:
-          player1 = Player(window, window.w - 20, 'Player', 40)
+          self.player1_paddle_size = 40
           break
       if button_2.collidepoint((mx, my)):
         if click:

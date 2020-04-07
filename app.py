@@ -23,11 +23,11 @@ if __name__ == '__main__':
   projectile = Projectile(window)
   ball = projectile.position
 
-  player1 = Player(window, window.w - 20, 'Player', 400)
+  menu = Menu()
+  menu.main_menu(window)
+
+  player1 = Player(window, window.w - 20, 'Player', menu.player1_paddle_size)
   player2 = Player(window, 10, 'cpu', 100, 10)
-
-
-  Menu.main_menu(window, player1, player2)
 
   # player1_name = input("Enter your name: ")
 
