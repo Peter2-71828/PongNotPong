@@ -1,7 +1,8 @@
-import pygame, sys
+import pygame
 from pong_game.projectile import Projectile
 from pong_game.player import Player
 from pong_game.window import Window
+from pong_game.user_in import move
 from tracking.object_tracker import movement
 from multiprocessing import Process, Queue
 import multiprocessing as mp
@@ -26,51 +27,11 @@ if __name__ == '__main__':
     player1 = Player(window, window.w - 20, player1_name)
 
     player2 = Player(window, 10, 'cpu', 10)
-    # position = 200
-    # time.sleep(2)
-    # if q.empty() == False:
-    #     position = q.get(False)
-    #
-    # print(position)
-
-    # def game_play():
-
-    def move(position):
-        print(position)
-        if position <= 90:
-            player1.speed -= 7
-
-        if position >= 110:
-            player1.speed += 7
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN:
-                    player1.speed += 7
-
-                if event.key == pygame.K_UP:
-                    player1.speed -= 7
-
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_DOWN:
-                    player1.speed -= 7
-
-                if event.key == pygame.K_UP:
-                    player1.speed += 7
-
-            if event.type == pygame.VIDEORESIZE:
-                window.resize(event.w, event.h)
-                player1.update_player(window, window.w - 20)
-                player2.update_player(window, 10)
 
     while True:
 
         position = q.get()
-        move(position)
+        move(position, player1, player2)
 
         projectile.ball_animation(player1, player2, ball, window)
         player1.player_animation(player1.position, window)
@@ -80,9 +41,5 @@ if __name__ == '__main__':
 
         player1.speed = player1.speed/2
 
-        # Updating the window
         pygame.display.flip()
         clock.tick(60)
-
-# movement(q)
-# game_play()
