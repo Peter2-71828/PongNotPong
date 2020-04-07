@@ -50,7 +50,7 @@ def movement(q):
 		objects = cr.update(rects)
 
 		if q.empty() == False:
-			q.get(False)
+			q.get()
 
 		for k, v in objects.items():
 			q.put(v[1])
