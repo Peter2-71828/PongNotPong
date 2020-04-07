@@ -31,8 +31,6 @@ if __name__ == '__main__':
 
   # player1_name = input("Enter your name: ")
 
-  player2 = Player(window, 10, 'cpu', 10)
-
   while True:
 
     position = q.get()
