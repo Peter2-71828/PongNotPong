@@ -4,8 +4,9 @@ from pong_game.projectile import Projectile
 
 class Player():
 
-    def __init__(self, window, x_position, name, speed=0):
-        self.position = pygame.Rect(x_position, window.h/2 -70, 10, window.h/7)
+    def __init__(self, window, x_position, name, size, speed=0):
+        self.size = size
+        self.position = pygame.Rect(x_position, window.h/2 -70, 10, size)
         self.speed = speed
         self.name = name
         self.score = 0
