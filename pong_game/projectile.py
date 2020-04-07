@@ -16,11 +16,11 @@ class Projectile():
         self.speed_y *= -1
 
       if ball.left <= 0:
-        player1.score += 1
+        player2.score += 1
         self.ball_restart(ball, window)
 
       if ball.right >= window.w:
-        player2.score += 1
+        player1.score += 1
         self.ball_restart(ball, window)
 
       if ball.colliderect(player1.position) or ball.colliderect(player2.position):
