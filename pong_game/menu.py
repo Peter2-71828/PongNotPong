@@ -141,3 +141,62 @@ class Menu():
 
       pygame.display.update()
       clock.tick(60)
+
+  def winner_menu(self, window):
+    click = False
+    window_width = window.w
+    window_height = window.h
+    button_width = 250
+    button_height = 200
+    screen = pygame.display.set_mode((window_width, window_height),0,32)
+    font = pygame.font.SysFont(None, 80)
+    title_font = pygame.font.SysFont(None, 100)
+    clock = pygame.time.Clock()
+
+    def draw_text(text, font, color, surface, x, y):
+      textobj = font.render(text, 1, color)
+      textrect = textobj.get_rect()
+      textrect.center = (x, y)
+      surface.blit(textobj, textrect)
+
+    while True:
+        
+      screen.fill((0,0,0))
+
+      mx, my = pygame.mouse.get_pos()
+
+      button_restart = pygame.Rect((window_width/3) - button_width / 2, window_height/3, button_width, button_height)
+      button_exit = pygame.Rect((2*window_width/3) - button_width/2, window_height/3, button_width, button_height)
+
+      pygame.draw.rect(screen, (255, 0, 0), button_restart)
+      pygame.draw.rect(screen, (255, 0, 0), button_exit)
+
+      draw_text('Would you like to play again?', title_font, (255,255,255), screen, window_width/2, window_height/6)
+      draw_text('Restart', font, (255,255,255), screen, window_width/3, (button_height/2 + window_height/3))
+      draw_text('Exit', font, (255,255,255), screen, (2*window_width)/3, (button_height/2 + window_height/3))
+
+
+      if button_restart.collidepoint((mx, my)):
+        if click:
+          break
+      if button_exit.collidepoint((mx, my)):
+        if click:
+          pygame.quit()
+          sys.exit()
+          break
+
+      click = False
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+          pygame.quit()
+          sys.exit()
+        if event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+          if event.button == 1:
+            click = True
+
+      pygame.display.update()
+      clock.tick(60)

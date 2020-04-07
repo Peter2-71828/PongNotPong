@@ -51,4 +51,5 @@ if __name__ == '__main__':
       clock.tick(60)
 
       if player1.score == menu.max_score or player2.score == menu.max_score:
+        menu.winner_menu(window)
         break
