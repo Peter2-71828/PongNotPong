@@ -27,6 +27,7 @@ if __name__ == '__main__':
 
   while True:
     menu.main_menu(window)
+    menu.score_menu(window)
 
     player1 = Player(window, window.w - 20, 'Player', menu.player1_paddle_size)
     player2 = Player(window, 10, 'cpu', 100, 10)
@@ -49,5 +50,5 @@ if __name__ == '__main__':
       pygame.display.flip()
       clock.tick(60)
 
-      if player1.score == 2 or player2.score == 2:
+      if player1.score == menu.max_score or player2.score == menu.max_score:
         break

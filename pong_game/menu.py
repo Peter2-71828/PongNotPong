@@ -6,8 +6,9 @@ from pong_game.window import Window
 
 class Menu():
 
-  def __init__(self, player1_paddle_size = 200):
+  def __init__(self, player1_paddle_size = 200, max_score = 5):
     self.player1_paddle_size = player1_paddle_size
+    self.max_score = max_score
 
   def main_menu(self, window):
     click = False
@@ -35,18 +36,15 @@ class Menu():
       button_easy = pygame.Rect((window_width/4) - button_width / 2, window_height/3, button_width, button_height)
       button_medium = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
       button_hard = pygame.Rect(((window_width/4) * 3) - (button_width/2), window_height/3, button_width, button_height)
-      button_2 = pygame.Rect((window_width - button_width)/2, 2 * window_height/3, button_width, button_height)
 
       pygame.draw.rect(screen, (255, 0, 0), button_easy)
       pygame.draw.rect(screen, (255, 0, 0), button_medium)
       pygame.draw.rect(screen, (255, 0, 0), button_hard)
-      pygame.draw.rect(screen, (255, 0, 0), button_2)
 
       draw_text('Pong Not Pong', title_font, (255,255,255), screen, window_width/2, window_height/6)
       draw_text('Easy', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
       draw_text('Medium', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
       draw_text('Hard', font, (255,255,255), screen, (window_width/4) * 3, (button_height/2 + window_height/3))
-      draw_text('Options', font, (255,255,255), screen, window_width/2 , (button_height/2 + 2*window_height/3))
 
 
       if button_easy.collidepoint((mx, my)):
@@ -61,10 +59,6 @@ class Menu():
         if click:
           self.player1_paddle_size = 40
           break
-      if button_2.collidepoint((mx, my)):
-        if click:
-          pygame.quit()
-          sys.exit()
 
       click = False
       for event in pygame.event.get():
@@ -121,15 +115,15 @@ class Menu():
 
       if button_low.collidepoint((mx, my)):
         if click:
-          self.player1_paddle_size = 400
+          self.max_score = 2
           break
       if button_mid.collidepoint((mx, my)):
         if click:
-          self.player1_paddle_size = 200
+          self.max_score = 5
           break
       if button_high.collidepoint((mx, my)):
         if click:
-          self.player1_paddle_size = 40
+          self.max_score = 7
           break
 
       click = False
