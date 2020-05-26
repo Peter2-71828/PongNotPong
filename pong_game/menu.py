@@ -12,11 +12,10 @@ class Menu():
 
   def main_menu(self, window):
     click = False
-    window_width = window.w
-    window_height = window.h
+    window.h = window.h
     button_width = 250
     button_height = 200
-    screen = pygame.display.set_mode((window_width, window_height),0,32)
+    screen = pygame.display.set_mode((window.w, window.h),0,32)
     font = pygame.font.SysFont(None, 80)
     title_font = pygame.font.SysFont(None, 100)
     clock = pygame.time.Clock()
@@ -33,18 +32,18 @@ class Menu():
 
       mx, my = pygame.mouse.get_pos()
 
-      button_easy = pygame.Rect((window_width/4) - button_width / 2, window_height/3, button_width, button_height)
-      button_medium = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
-      button_hard = pygame.Rect(((window_width/4) * 3) - (button_width/2), window_height/3, button_width, button_height)
+      button_easy = pygame.Rect((window.w/4) - button_width / 2, window.h/3, button_width, button_height)
+      button_medium = pygame.Rect((window.w - button_width)/2, window.h/3, button_width, button_height)
+      button_hard = pygame.Rect(((window.w/4) * 3) - (button_width/2), window.h/3, button_width, button_height)
 
       pygame.draw.rect(screen, (255, 0, 0), button_easy)
       pygame.draw.rect(screen, (255, 0, 0), button_medium)
       pygame.draw.rect(screen, (255, 0, 0), button_hard)
 
-      draw_text('Pong Not Pong', title_font, (255,255,255), screen, window_width/2, window_height/6)
-      draw_text('Easy', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
-      draw_text('Medium', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
-      draw_text('Hard', font, (255,255,255), screen, (window_width/4) * 3, (button_height/2 + window_height/3))
+      draw_text('Pong Not Pong', title_font, (255,255,255), screen, window.w/2, window.h/6)
+      draw_text('Easy', font, (255,255,255), screen, window.w/4, (button_height/2 + window.h/3))
+      draw_text('Medium', font, (255,255,255), screen, window.w/2, (button_height/2 + window.h/3))
+      draw_text('Hard', font, (255,255,255), screen, (window.w/4) * 3, (button_height/2 + window.h/3))
 
 
       if button_easy.collidepoint((mx, my)):
@@ -78,11 +77,11 @@ class Menu():
 
   def score_menu(self, window):
     click = False
-    window_width = window.w
-    window_height = window.h
+    window.w = window.w
+    window.h = window.h
     button_width = 250
     button_height = 200
-    screen = pygame.display.set_mode((window_width, window_height),0,32)
+    screen = pygame.display.set_mode((window.w, window.h),0,32)
     font = pygame.font.SysFont(None, 80)
     title_font = pygame.font.SysFont(None, 100)
     clock = pygame.time.Clock()
@@ -99,18 +98,18 @@ class Menu():
 
       mx, my = pygame.mouse.get_pos()
 
-      button_low = pygame.Rect((window_width/4) - button_width / 2, window_height/3, button_width, button_height)
-      button_mid = pygame.Rect((window_width - button_width)/2, window_height/3, button_width, button_height)
-      button_high = pygame.Rect(((window_width/4) * 3) - (button_width/2), window_height/3, button_width, button_height)
+      button_low = pygame.Rect((window.w/4) - button_width / 2, window.h/3, button_width, button_height)
+      button_mid = pygame.Rect((window.w - button_width)/2, window.h/3, button_width, button_height)
+      button_high = pygame.Rect(((window.w/4) * 3) - (button_width/2), window.h/3, button_width, button_height)
 
       pygame.draw.rect(screen, (255, 0, 0), button_low)
       pygame.draw.rect(screen, (255, 0, 0), button_mid)
       pygame.draw.rect(screen, (255, 0, 0), button_high)
 
-      draw_text('Select Max score:', title_font, (255,255,255), screen, window_width/2, window_height/6)
-      draw_text('2', font, (255,255,255), screen, window_width/4, (button_height/2 + window_height/3))
-      draw_text('5', font, (255,255,255), screen, window_width/2, (button_height/2 + window_height/3))
-      draw_text('7', font, (255,255,255), screen, (window_width/4) * 3, (button_height/2 + window_height/3))
+      draw_text('Select Max score:', title_font, (255,255,255), screen, window.w/2, window.h/6)
+      draw_text('2', font, (255,255,255), screen, window.w/4, (button_height/2 + window.h/3))
+      draw_text('5', font, (255,255,255), screen, window.w/2, (button_height/2 + window.h/3))
+      draw_text('7', font, (255,255,255), screen, (window.w/4) * 3, (button_height/2 + window.h/3))
 
 
       if button_low.collidepoint((mx, my)):
@@ -145,11 +144,9 @@ class Menu():
   def winner_menu(self, window, winner):
     winner_string = '{} is the winner!'.format(winner)
     click = False
-    window_width = window.w
-    window_height = window.h
     button_width = 250
     button_height = 200
-    screen = pygame.display.set_mode((window_width, window_height),0,32)
+    screen = pygame.display.set_mode((window.w, window.h),0,32)
     font = pygame.font.SysFont(None, 80)
     title_font = pygame.font.SysFont(None, 100)
     clock = pygame.time.Clock()
@@ -166,15 +163,15 @@ class Menu():
 
       mx, my = pygame.mouse.get_pos()
 
-      button_restart = pygame.Rect((window_width/3) - button_width / 2, window_height/3, button_width, button_height)
-      button_exit = pygame.Rect((2*window_width/3) - button_width/2, window_height/3, button_width, button_height)
+      button_restart = pygame.Rect((window.w/3) - button_width / 2, window.h/3, button_width, button_height)
+      button_exit = pygame.Rect((2*window.w/3) - button_width/2, window.h/3, button_width, button_height)
 
       pygame.draw.rect(screen, (255, 0, 0), button_restart)
       pygame.draw.rect(screen, (255, 0, 0), button_exit)
 
-      draw_text(winner_string, title_font, (255,255,255), screen, window_width/2, window_height/6)
-      draw_text('Restart', font, (255,255,255), screen, window_width/3, (button_height/2 + window_height/3))
-      draw_text('Exit', font, (255,255,255), screen, (2*window_width)/3, (button_height/2 + window_height/3))
+      draw_text(winner_string, title_font, (255,255,255), screen, window.w/2, window.h/6)
+      draw_text('Restart', font, (255,255,255), screen, window.w/3, (button_height/2 + window.h/3))
+      draw_text('Exit', font, (255,255,255), screen, (2*window.w)/3, (button_height/2 + window.h/3))
 
 
       if button_restart.collidepoint((mx, my)):
