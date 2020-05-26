@@ -53,7 +53,7 @@ class Menu():
         self.player1_paddle_size = 40
         self.click = True
 
-  def menu(self, window):
+  def menu(self, window, select='main'):
     self.click = False
     screen = pygame.display.set_mode((window.w, window.h),0,32)
     clock = pygame.time.Clock()
@@ -62,7 +62,12 @@ class Menu():
         screen.fill((0,0,0))
         mx, my = pygame.mouse.get_pos()
 
-        self.main(window, screen, mx, my)
+        if select == 'main':
+            self.main(window, screen, mx, my)
+        elif select == 'score':
+            print('test')
+        elif select == 'winner':
+            print('test')
 
         self.click = False
         for event in pygame.event.get():
