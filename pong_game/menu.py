@@ -30,7 +30,6 @@ class Menu():
     clock = pygame.time.Clock()
 
     while True:
-
         screen.fill((0,0,0))
         mx, my = pygame.mouse.get_pos()
 

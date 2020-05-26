@@ -33,9 +33,10 @@ if __name__ == '__main__':
     player2 = Player(window, 10, 'Cedrick', 100, 10)
 
     # player1_name = input("Enter your name: ")
-
+    i = 0
     while True:
-
+        i +=1
+        print(i)
         l.acquire()
         position = q.get()
         l.release()
@@ -48,13 +49,12 @@ if __name__ == '__main__':
         window.update_display(player1, player2, ball)
 
         player1.speed = player1.speed/2
-
         pygame.display.flip()
         clock.tick(60)
 
-        if player1.score == menu.max_score or player2.score == menu.max_score:
-            if player1.score > player2.score:
-                winner = player1.name
-            else:
-                winner = player2.name
-            menu.winner_menu(window, winner)
+        # if player1.score == menu.max_score or player2.score == menu.max_score:
+        #     if player1.score > player2.score:
+        #         winner = player1.name
+        #     else:
+        #         winner = player2.name
+        #     menu.winner_menu(window, winner)
