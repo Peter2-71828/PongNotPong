@@ -28,11 +28,17 @@ if __name__ == '__main__':
   player2 = Player(window, 10, 'cpu', 100, 10)
 
 
-  main_menu(window, player1, player2)
+  # main_menu(window, player1, player2)
 
   # player1_name = input("Enter your name: ")
 
   while True:
+
+    for event in pygame.event.get():
+        if event.type == pygame.VIDEORESIZE:
+            window.resize(event.w, event.h)
+            player1.update_player(window, window.w - 20)
+            player2.update_player(window, 10)
 
     l.acquire()
     position = q.get()
