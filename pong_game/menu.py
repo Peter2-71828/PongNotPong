@@ -6,8 +6,7 @@ from pong_game.window import Window
 
 class Menu():
 
-  def __init__(self, window, player1_paddle_size = 200, max_score = 5):
-    self.window = window
+  def __init__(self, player1_paddle_size = 200, max_score = 5):
     self.player1_paddle_size = player1_paddle_size
     self.max_score = max_score
 
