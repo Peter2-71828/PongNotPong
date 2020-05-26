@@ -24,7 +24,7 @@ if __name__ == '__main__':
     projectile = Projectile(window)
     ball = projectile.position
 
-    menu = Menu()
+    menu = Menu(window)
 
     menu.main_menu(window)
     menu.score_menu(window)
