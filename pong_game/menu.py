@@ -12,7 +12,6 @@ class Menu():
 
   def main_menu(self, window):
     click = False
-    window.h = window.h
     button_width = 250
     button_height = 200
     screen = pygame.display.set_mode((window.w, window.h),0,32)
@@ -85,12 +84,6 @@ class Menu():
     font = pygame.font.SysFont(None, 80)
     title_font = pygame.font.SysFont(None, 100)
     clock = pygame.time.Clock()
-
-    def draw_text(text, font, color, surface, x, y):
-      textobj = font.render(text, 1, color)
-      textrect = textobj.get_rect()
-      textrect.center = (x, y)
-      surface.blit(textobj, textrect)
 
     while True:
 
