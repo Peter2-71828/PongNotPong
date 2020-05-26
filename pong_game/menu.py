@@ -6,7 +6,8 @@ from pong_game.window import Window
 
 class Menu():
 
-  def __init__(self, player1_paddle_size = 200, max_score = 5):
+  def __init__(self, window, player1_paddle_size = 200, max_score = 5):
+    self.window = window
     self.player1_paddle_size = player1_paddle_size
     self.max_score = max_score
 
@@ -28,7 +29,7 @@ class Menu():
       surface.blit(textobj, textrect)
 
     while True:
-        
+
       screen.fill((0,0,0))
 
       mx, my = pygame.mouse.get_pos()
@@ -94,7 +95,7 @@ class Menu():
       surface.blit(textobj, textrect)
 
     while True:
-        
+
       screen.fill((0,0,0))
 
       mx, my = pygame.mouse.get_pos()
@@ -161,7 +162,7 @@ class Menu():
       surface.blit(textobj, textrect)
 
     while True:
-        
+
       screen.fill((0,0,0))
 
       mx, my = pygame.mouse.get_pos()
