@@ -24,10 +24,10 @@ if __name__ == '__main__':
     projectile = Projectile(window)
     ball = projectile.position
 
-    menu = Menu(window)
+    menu = Menu()
 
-    # menu.main_menu(window)
-    # menu.score_menu(window)
+    menu.main_menu(window)
+    menu.score_menu(window)
 
     player1 = Player(window, window.w - 20, 'Player', menu.player1_paddle_size)
     player2 = Player(window, 10, 'Cedrick', 100, 10)
