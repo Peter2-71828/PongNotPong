@@ -12,9 +12,11 @@ class Menu():
     self.button_width = 250
     self.button_height = 200
     self.click = False
+    self.font = pygame.font.SysFont(None, 80)
+    self.title_font = pygame.font.SysFont(None, 100)
 
   def draw_text(self, text, font, color, surface, x, y):
-    textobj = font.render(text, 1, color)
+    textobj = self.font.render(text, 1, color)
     textrect = textobj.get_rect()
     textrect.center = (x, y)
     surface.blit(textobj, textrect)
@@ -22,43 +24,45 @@ class Menu():
     # def winner_menu(self, window, winner):
     # winner_string = '{} is the winner!'.format(winner)
 
+  def main(self, window, screen, mx, my):
+
+    button_easy = pygame.Rect((window.w/4) - self.button_width / 2, window.h/3, self.button_width, self.button_height)
+    button_medium = pygame.Rect((window.w - self.button_width)/2, window.h/3, self.button_width, self.button_height)
+    button_hard = pygame.Rect(((window.w/4) * 3) - (self.button_width/2), window.h/3, self.button_width, self.button_height)
+
+    pygame.draw.rect(screen, (255, 0, 0), button_easy)
+    pygame.draw.rect(screen, (255, 0, 0), button_medium)
+    pygame.draw.rect(screen, (255, 0, 0), button_hard)
+
+    self.draw_text('Pong Not Pong', self.title_font, (255,255,255), screen, window.w/2, window.h/6)
+    self.draw_text('Easy', self.font, (255,255,255), screen, window.w/4, (self.button_height/2 + window.h/3))
+    self.draw_text('Medium', self.font, (255,255,255), screen, window.w/2, (self.button_height/2 + window.h/3))
+    self.draw_text('Hard', self.font, (255,255,255), screen, (window.w/4) * 3, (self.button_height/2 + window.h/3))
+
+
+    if button_easy.collidepoint((mx, my)):
+      if self.click:
+        self.player1_paddle_size = 400
+        self.click = True
+    if button_medium.collidepoint((mx, my)):
+      if self.click:
+        self.player1_paddle_size = 200
+        self.click = True
+    if button_hard.collidepoint((mx, my)):
+      if self.click:
+        self.player1_paddle_size = 40
+        self.click = True
+
   def menu(self, window):
     self.click = False
     screen = pygame.display.set_mode((window.w, window.h),0,32)
-    font = pygame.font.SysFont(None, 80)
-    title_font = pygame.font.SysFont(None, 100)
     clock = pygame.time.Clock()
 
-    while True:
+    while self.click == False:
         screen.fill((0,0,0))
         mx, my = pygame.mouse.get_pos()
 
-        button_easy = pygame.Rect((window.w/4) - self.button_width / 2, window.h/3, self.button_width, self.button_height)
-        button_medium = pygame.Rect((window.w - self.button_width)/2, window.h/3, self.button_width, self.button_height)
-        button_hard = pygame.Rect(((window.w/4) * 3) - (self.button_width/2), window.h/3, self.button_width, self.button_height)
-
-        pygame.draw.rect(screen, (255, 0, 0), button_easy)
-        pygame.draw.rect(screen, (255, 0, 0), button_medium)
-        pygame.draw.rect(screen, (255, 0, 0), button_hard)
-
-        self.draw_text('Pong Not Pong', title_font, (255,255,255), screen, window.w/2, window.h/6)
-        self.draw_text('Easy', font, (255,255,255), screen, window.w/4, (self.button_height/2 + window.h/3))
-        self.draw_text('Medium', font, (255,255,255), screen, window.w/2, (self.button_height/2 + window.h/3))
-        self.draw_text('Hard', font, (255,255,255), screen, (window.w/4) * 3, (self.button_height/2 + window.h/3))
-
-
-        if button_easy.collidepoint((mx, my)):
-          if self.click:
-            self.player1_paddle_size = 400
-            break
-        if button_medium.collidepoint((mx, my)):
-          if self.click:
-            self.player1_paddle_size = 200
-            break
-        if button_hard.collidepoint((mx, my)):
-          if self.click:
-            self.player1_paddle_size = 40
-            break
+        self.main(window, screen, mx, my)
 
         self.click = False
         for event in pygame.event.get():
