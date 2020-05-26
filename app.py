@@ -34,16 +34,10 @@ if __name__ == '__main__':
 
   while True:
 
-    for event in pygame.event.get():
-        if event.type == pygame.VIDEORESIZE:
-            window.resize(event.w, event.h)
-            player1.update_player(window, window.w - 20)
-            player2.update_player(window, 10)
-
     l.acquire()
     position = q.get()
     l.release()
-    move(position, player1, player2)
+    move(position, player1, player2, window)
 
     projectile.ball_animation(player1, player2, ball, window)
     player1.player_animation(player1.position, window)
