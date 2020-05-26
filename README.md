@@ -12,16 +12,18 @@ End: 09/04/2020
 ## Table of Contents
 
 * [Description](#description)
+* [How To Use](#how-to-use)
 * [Project Structure](#project-structure)
 * [User Stories](#user-stories)
 * [Technologies](#technologies)
-* [Launch](#launch)
-* [Project Status](#project-status)
+* [Future Improvements](#future-improvements)
 
 ## Description
 
 The MVP for our project is to be able to recognise  
 a body part and have it utilise it as a user input for a game
+
+## User Stories
 
 ## Project Structure
 ```
@@ -39,21 +41,21 @@ a body part and have it utilise it as a user input for a game
 +-- _environment.yml
 ```
 
-## User Stories
-
-
 ## Technologies
 
 Python 3.7.7
 OpenCV
 
-## Launch
+## How to Use
 
 Will need help filling out this field. To be completed.
 
-## Project Status
+## Future Improvements
 
-Work in progress:
+If the game was to be developed further the following might be a good place to start:
 
-* Completed step 1
-* No spec file for testing created yet
+* Maintain aspect ratio while scaling
+* Prevent projectile projectile entering scoring area when extreme rescaling
+* Improve cpu
+* Create two player local and or online multiplayer
+* Write tests, especially important if the project was to be progressed any significant amount further
