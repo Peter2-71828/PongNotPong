@@ -26,8 +26,8 @@ if __name__ == '__main__':
 
     menu = Menu()
 
-    menu.menu(window)
-    # menu.score_menu(window)
+    menu.menu(window, 'main')
+    menu.menu(window, 'score')
 
     player1 = Player(window, window.w - 20, 'Player', menu.player1_paddle_size)
     player2 = Player(window, 10, 'Cedrick', 100, 10)

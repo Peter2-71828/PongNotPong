@@ -53,7 +53,38 @@ class Menu():
         self.player1_paddle_size = 40
         self.click = True
 
+  def score(self, window, screen, mx, my):
+    button_low = pygame.Rect((window.w/4) - self.button_width / 2, window.h/3, self.button_width, self.button_height)
+    button_mid = pygame.Rect((window.w - self.button_width)/2, window.h/3, self.button_width, self.button_height)
+    button_high = pygame.Rect(((window.w/4) * 3) - (self.button_width/2), window.h/3, self.button_width, self.button_height)
+
+    pygame.draw.rect(screen, (255, 0, 0), button_low)
+    pygame.draw.rect(screen, (255, 0, 0), button_mid)
+    pygame.draw.rect(screen, (255, 0, 0), button_high)
+
+    self.draw_text('Select Max score:', self.title_font, (255,255,255), screen, window.w/2, window.h/6)
+    self.draw_text('2', self.font, (255,255,255), screen, window.w/4, (self.button_height/2 + window.h/3))
+    self.draw_text('5', self.font, (255,255,255), screen, window.w/2, (self.button_height/2 + window.h/3))
+    self.draw_text('7', self.font, (255,255,255), screen, (window.w/4) * 3, (self.button_height/2 + window.h/3))
+
+
+    if button_low.collidepoint((mx, my)):
+      if self.click:
+        self.max_score = 2
+        self.click = True
+    if button_mid.collidepoint((mx, my)):
+      if self.click:
+        self.max_score = 5
+        self.click = True
+    if button_high.collidepoint((mx, my)):
+      if self.click:
+        self.max_score = 7
+        self.click = True
+
+  def winner(self, window, screen, mx, my):
+
   def menu(self, window, select='main'):
+
     self.click = False
     screen = pygame.display.set_mode((window.w, window.h),0,32)
     clock = pygame.time.Clock()
@@ -65,9 +96,9 @@ class Menu():
         if select == 'main':
             self.main(window, screen, mx, my)
         elif select == 'score':
-            print('test')
+            self.score(window, screen, mx, my)
         elif select == 'winner':
-            print('test')
+            self.winner(window, screen, mx, my)
 
         self.click = False
         for event in pygame.event.get():
