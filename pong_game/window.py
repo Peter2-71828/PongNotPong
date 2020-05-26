@@ -23,7 +23,7 @@ class Window():
         pygame.draw.ellipse(self.game_display,orange, ball)
         pygame.draw.aaline(self.game_display, orange, (self.w/2, 0), (self.w/2,self.h))
         pygame.draw.aaline(self.game_display, orange, (self.w ,self.score_size), (0,self.score_size))
-        font = pygame.font.Font(None, 74)
+        font = pygame.font.Font(None, int(self.w*74/1280))
         text = font.render(str(f"Computer - {player1.score}"), 1, orange)
         self.game_display.blit(text, (self.w / 6, 25))
         text = font.render(str(f"{player1.name} - {player2.score}"), 1, orange)
