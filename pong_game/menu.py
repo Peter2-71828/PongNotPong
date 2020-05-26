@@ -26,6 +26,10 @@ class Menu():
     textrect.center = (x, y)
     surface.blit(textobj, textrect)
 
+    # def winner_menu(self, window, winner):
+    # winner_string = '{} is the winner!'.format(winner)
+
+
 while True:
 
   screen.fill((0,0,0))
