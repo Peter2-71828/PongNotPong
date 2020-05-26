@@ -13,7 +13,7 @@ class Menu():
     self.button_height = 200
     self.click = False
 
-  def draw_text(text, font, color, surface, x, y):
+  def draw_text(self, text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
     textrect.center = (x, y)
@@ -42,10 +42,10 @@ class Menu():
         pygame.draw.rect(screen, (255, 0, 0), button_medium)
         pygame.draw.rect(screen, (255, 0, 0), button_hard)
 
-        draw_text('Pong Not Pong', title_font, (255,255,255), screen, window.w/2, window.h/6)
-        draw_text('Easy', font, (255,255,255), screen, window.w/4, (self.button_height/2 + window.h/3))
-        draw_text('Medium', font, (255,255,255), screen, window.w/2, (self.button_height/2 + window.h/3))
-        draw_text('Hard', font, (255,255,255), screen, (window.w/4) * 3, (self.button_height/2 + window.h/3))
+        self.draw_text('Pong Not Pong', title_font, (255,255,255), screen, window.w/2, window.h/6)
+        self.draw_text('Easy', font, (255,255,255), screen, window.w/4, (self.button_height/2 + window.h/3))
+        self.draw_text('Medium', font, (255,255,255), screen, window.w/2, (self.button_height/2 + window.h/3))
+        self.draw_text('Hard', font, (255,255,255), screen, (window.w/4) * 3, (self.button_height/2 + window.h/3))
 
 
         if button_easy.collidepoint((mx, my)):
