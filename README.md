@@ -27,10 +27,13 @@ a body part and have it utilise it as a user input for a game
 
 ## Project Structure
 ```
-+-- _pongGame
++-- pong_game
 |   +-- window.py
 |   +-- paddle.py
-|   +-- ball.py
+|   +-- projectile.py
+|   +-- player.py
+|   +-- user_in.py
+|   +-- menu.py
 +-- _tracking
 |   +-- objectTracker.py
 |   +-- centroidTracker.py
