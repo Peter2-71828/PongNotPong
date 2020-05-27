@@ -12,18 +12,32 @@ End: 09/04/2020
 ## Table of Contents
 
 * [Description](#description)
+  * [MVP](#mvp)
 * [How To Use](#how-to-use)
-* [Project Structure](#project-structure)
-* [User Stories](#user-stories)
 * [Technologies](#technologies)
+* [Project Structure](#project-structure)
 * [Future Improvements](#future-improvements)
 
 ## Description
-
+### MVP
 The MVP for our project is to be able to recognise  
 a body part and have it utilise it as a user input for a game
 
-## User Stories
+## How to Use
+
+* clone or fork this repo
+* ensure you have both python and conda installed and are runing the corect version indicated in the [Technologies](#technologies) section
+* navigate to the root directory of the repo, PongNotPong  
+* run:   
+``conda env create -f environment.yml``  
+``conda activate PongNotPong``
+* to launch the game run ``python app.py``
+
+## Technologies
+
+Python 3.7.7
+Conda 4.8.3
+OpenCV
 
 ## Project Structure
 ```
@@ -43,22 +57,6 @@ a body part and have it utilise it as a user input for a game
 +-- _README.md
 +-- _environment.yml
 ```
-
-## Technologies
-
-Python 3.7.7
-Conda 4.8.3
-OpenCV
-
-## How to Use
-
-* clone or fork this repo
-* ensure you have both python and conda installed and are runing the corect version indicated in the [Technologies](#technologies) section
-* navigate to the root directory of the repo, PongNotPong  
-* run:   
-``conda env create -f environment.yml``  
-``conda activate PongNotPong``
-* to launch the game run ``python app.py``
 
 ## Future Improvements
 
