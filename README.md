@@ -44,11 +44,18 @@ a body part and have it utilise it as a user input for a game
 ## Technologies
 
 Python 3.7.7
+Conda 4.8.3
 OpenCV
 
 ## How to Use
 
-Will need help filling out this field. To be completed.
+* clone or fork this repo
+* ensure you have both python and conda installed and are runing the corect version indicated in the [Technologies](#technologies) section
+* navigate to the root directory of the repo, PongNotPong  
+* run:   
+``conda env create -f environment.yml``  
+``conda activate PongNotPong``
+* to launch the game run ``python app.py``
 
 ## Future Improvements
 
