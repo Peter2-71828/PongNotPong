@@ -30,12 +30,12 @@ As a team of 4 we designed and built a simple, single player pong game. The game
 
 ### MVP
 Build a program that is to be able to recognise  
-a body part and  utilise it as a user input for a game
+a body part and utilise it as a user input for a game
 
 ## How to Use
 
 * clone or fork this repo
-* ensure you have both python and conda installed and are runing the corect version indicated in the [Technologies](#technologies) section
+* ensure you have both Python and Conda installed and are running the correct version indicated in the [Technologies](#technologies) section
 * navigate to the root directory of the repo, PongNotPong  
 * run:   
 ``conda env create -f environment.yml``  
