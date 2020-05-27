@@ -19,9 +19,12 @@ End: 09/04/2020
 * [Future Improvements](#future-improvements)
 
 ## Description
+
+As a team of 4 we designed and built a simple, single player pong game. The game utilises hand tracking, achieved through computer vision, as the primary means of user input. The project was initially completed in 11 days and no member of the team had previous experience with the primary technologies involved. 
+
 ### MVP
-The MVP for our project is to be able to recognise  
-a body part and have it utilise it as a user input for a game
+Build a program that is to be able to recognise  
+a body part and  utilise it as a user input for a game
 
 ## How to Use
 
