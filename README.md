@@ -12,6 +12,7 @@ End: 09/04/2020
 ## Table of Contents
 
 * [Description](#description)
+  * [Game Play Video](#game-play-video)
   * [Overview](#overview)
   * [MVP](#mvp)
 * [How To Use](#how-to-use)
@@ -21,7 +22,8 @@ End: 09/04/2020
 
 ## Description
 
-[![Pong](http://img.youtu.be/XgSwKFBHiGE/14.jpg)](https://youtu.be/XgSwKFBHiGE)
+### Game Play Video
+[![Pong](https://img.youtube.com/vi/XgSwKFBHiGE/0.jpg)](https://youtu.be/XgSwKFBHiGE)
 
 ### Overview
 As a team of 4 we designed and built a simple, single player pong game. The game utilises hand tracking, achieved through computer vision, as the primary means of user input. The project was initially completed in 11 days and no member of the team had previous experience with the primary technologies involved.
