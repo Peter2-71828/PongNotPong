@@ -2,7 +2,6 @@ import pygame, sys
 from pong_game.player import Player
 
 def move(position, player1, player2, window):
-    # print(position)
     if position <= 90:
         player1.speed -= 7
 
