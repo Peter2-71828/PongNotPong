@@ -28,3 +28,6 @@ class Window():
         self.game_display.blit(text, (self.w / 6, 25))
         text = font.render(str(f"{player1.name} - {player2.score}"), 1, orange)
         self.game_display.blit(text, ((self.w / 6) * 4, 25))
+
+    def menu(self, player1, player2, ball):
+        
