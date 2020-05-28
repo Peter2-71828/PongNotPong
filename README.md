@@ -12,23 +12,51 @@ End: 09/04/2020
 ## Table of Contents
 
 * [Description](#description)
-* [Project Structure](#project-structure)
-* [User Stories](#user-stories)
+  * [Game Play Video](#game-play-video)
+  * [Overview](#overview)
+  * [MVP](#mvp)
+* [How To Use](#how-to-use)
 * [Technologies](#technologies)
-* [Launch](#launch)
-* [Project Status](#project-status)
+* [Project Structure](#project-structure)
+* [Future Improvements](#future-improvements)
 
 ## Description
 
-The MVP for our project is to be able to recognise  
-a body part and have it utilise it as a user input for a game
+### Game Play Video
+[![Pong](https://img.youtube.com/vi/XgSwKFBHiGE/0.jpg)](https://youtu.be/XgSwKFBHiGE)
+
+### Overview
+As a team of 4 we designed and built a simple, single player pong game. The game utilises hand tracking, achieved through computer vision, as the primary means of user input. The project was initially completed in 11 days and no member of the team had previous experience with the primary technologies involved.
+
+### MVP
+Build a program that is to be able to recognise  
+a body part and utilise it as a user input for a game
+
+## How to Use
+
+* clone or fork this repo
+* ensure you have both Python and Conda installed and are running the correct version indicated in the [Technologies](#technologies) section
+* navigate to the root directory of the repo, PongNotPong  
+* run:   
+``conda env create -f environment.yml``  
+``conda activate PongNotPong``
+* to launch the game run ``python app.py``
+
+## Technologies
+
+Python 3.7.7
+Conda 4.8.3
+OpenCV
 
 ## Project Structure
 ```
-+-- _pongGame
++-- pong_game
 |   +-- window.py
 |   +-- paddle.py
-|   +-- ball.py
+|   +-- projectile.py
+|   +-- player.py
+|   +-- user_in.py
+|   +-- menu.py
 +-- _tracking
 |   +-- objectTracker.py
 |   +-- centroidTracker.py
@@ -39,21 +67,13 @@ a body part and have it utilise it as a user input for a game
 +-- _environment.yml
 ```
 
-## User Stories
+## Future Improvements
 
+If the game was to be developed further the following might be a good place to start:
 
-## Technologies
-
-Python 3.7.7
-OpenCV
-
-## Launch
-
-Will need help filling out this field. To be completed.
-
-## Project Status
-
-Work in progress:
-
-* Completed step 1
-* No spec file for testing created yet
+* Prevent modification of aspect ration while scaling gameplay window
+* Prevent projectile projectile entering scoring area when extreme rescaling
+* Improve cpu
+* Create two player local and or online multiplayer
+* Write tests, especially important if the project was to be progressed any significant amount further
+* Reintegrate menu functionality. Some unused menu code is in this branch though the code used for a wider range of menu choices is not present in this branch. This should be preferably implemented within main game loop.

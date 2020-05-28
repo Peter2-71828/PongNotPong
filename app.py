@@ -28,7 +28,7 @@ if __name__ == '__main__':
   player2 = Player(window, 10, 'cpu', 100, 10)
 
 
-  main_menu(window, player1, player2)
+  # main_menu(window, player1, player2)
 
   # player1_name = input("Enter your name: ")
 
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     l.acquire()
     position = q.get()
     l.release()
-    move(position, player1, player2)
+    move(position, player1, player2, window)
 
     projectile.ball_animation(player1, player2, ball, window)
     player1.player_animation(player1.position, window)
