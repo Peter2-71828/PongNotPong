@@ -3,6 +3,8 @@ import time
 from pong_game.player import Player
 from pong_game.window import Window
 
+# Extract methods into window class and run inside of main game loop'
+
 # window_width = 1280
 # window_height = 960
 # button_width = 250
