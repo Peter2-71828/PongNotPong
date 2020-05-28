@@ -23,7 +23,7 @@ def main_menu(window, player1, player2):
   button_width = 250
   button_height = 200
   # screen = pygame.display.set_mode((window_width, window_height),0,32)
-  font = pygame.font.SysFont(None, 80)
+  # font = pygame.font.SysFont(None, 80)
   title_font = pygame.font.SysFont(None, 100)
   clock = pygame.time.Clock()
 
