@@ -31,3 +31,9 @@ class Window():
         self.game_display.blit(playerScore, ((self.w / 6) * 4, 25))
 
     # def menu(self, player1, player2, ball):
+    #     self.game_display.fill(self.bg_color)
+    #     title = self.font.render(str("PongNotPong"), 1, self.orange)
+    #     self.game_display.blit(title, (self.w/2, 25))
+    #     button_easy = pygame.Rect((self.w/16), self.h/3, (self.w/4), (self.h/3))
+    #     button_medium = pygame.Rect((self.w*3/8), self.h/3, (self.w/4), (self.h/3))
+    #     button_hard = pygame.Rect((self.w*11/16), self.h/3, (self.w/4), (self.h/3))
