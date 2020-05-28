@@ -71,8 +71,9 @@ OpenCV
 
 If the game was to be developed further the following might be a good place to start:
 
-* Maintain aspect ratio while scaling
+* Prevent modification of aspect ration while scaling gameplay window
 * Prevent projectile projectile entering scoring area when extreme rescaling
 * Improve cpu
 * Create two player local and or online multiplayer
 * Write tests, especially important if the project was to be progressed any significant amount further
+* Reintegrate menu functionality. Some unused menu code is in this branch though the code used for a wider range of menu choices is not present in this branch. This should be preferably implemented within main game loop.
