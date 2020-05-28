@@ -18,11 +18,11 @@ from pong_game.window import Window
 
 def main_menu(window, player1, player2):
   click = False
-  window_width = 1280
-  window_height = 960
+  # window_width = 1280
+  # window_height = 960
   button_width = 250
   button_height = 200
-  screen = pygame.display.set_mode((window_width, window_height),0,32)
+  # screen = pygame.display.set_mode((window_width, window_height),0,32)
   font = pygame.font.SysFont(None, 80)
   title_font = pygame.font.SysFont(None, 100)
   clock = pygame.time.Clock()
@@ -34,7 +34,7 @@ def main_menu(window, player1, player2):
     surface.blit(textobj, textrect)
 
   while True:
-      
+
     screen.fill((0,0,0))
 
     mx, my = pygame.mouse.get_pos()
