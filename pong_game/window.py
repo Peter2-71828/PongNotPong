@@ -25,9 +25,9 @@ class Window():
         pygame.draw.ellipse(self.game_display,self.orange, ball)
         pygame.draw.aaline(self.game_display, self.orange, (self.w/2, 0), (self.w/2,self.h))
         pygame.draw.aaline(self.game_display, self.orange, (self.w ,self.score_size), (0,self.score_size))
-        text = self.font.render(str(f"Computer - {player1.score}"), 1, self.orange)
-        self.game_display.blit(text, (self.w / 6, 25))
-        text = self.font.render(str(f"{player1.name} - {player2.score}"), 1, self.orange)
-        self.game_display.blit(text, ((self.w / 6) * 4, 25))
+        computerScore = self.font.render(str(f"Computer - {player1.score}"), 1, self.orange)
+        self.game_display.blit(computerScore, (self.w / 6, 25))
+        playerScore = self.font.render(str(f"{player1.name} - {player2.score}"), 1, self.orange)
+        self.game_display.blit(playerScore, ((self.w / 6) * 4, 25))
 
     # def menu(self, player1, player2, ball):
